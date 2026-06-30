@@ -6,5 +6,7 @@ import { DashboardController } from './dashboard/dashboard.controller';
 import { OperationsController } from './operations/operations.controller';
 import { AiController } from './ai/ai.controller';
 import { StoreService } from './store.service';
-@Module({ controllers: [AuthController, CrmController, QuotesController, DashboardController, OperationsController, AiController], providers: [StoreService] })
+import { FinanceController } from './finance.controller';
+import { ConfigurationController } from './configuration.controller';
+@Module({ controllers: [AuthController, CrmController, QuotesController, DashboardController, OperationsController, AiController, FinanceController, ConfigurationController], providers: [StoreService] })
 export class AppModule {}
