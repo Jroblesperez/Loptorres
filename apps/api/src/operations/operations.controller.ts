@@ -1,0 +1,4 @@
+import { Controller, Get, Patch, Param, Body } from '@nestjs/common';
+import { StoreService } from '../store.service';
+@Controller()
+export class OperationsController { constructor(private store: StoreService) {} @Get('inventory') inventory(){ return this.store.inventory; } @Get('inventory/critical') critical(){ return this.store.inventory.filter(i=>i.stock<i.min); } @Get('production-orders') production(){ return this.store.production; } @Patch('production-orders/:id/status') update(@Param('id') id:string,@Body() body:{stage:string}){ const item=this.store.production.find(p=>p.id===id); if(item) item.stage=body.stage; return item; } @Get('installation-jobs') installations(){ return [{id:'in1',customer:'Constructora Altavista',type:'Medición',scheduledAt:'09:00'},{id:'in2',customer:'María Fernanda',type:'Instalación',scheduledAt:'11:30'}]; } }
